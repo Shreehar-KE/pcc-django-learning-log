@@ -1,0 +1,40 @@
+{% extends 'learning_logs/base.html' %}
+{% block page_header %}
+<div class="p-3 mb-4 bg-light border rounded-3">
+  <div class="container-fluid py-4">
+    <h1 class="display-3">Track your learning.</h1>
+
+    <p class="lead">Make your own Learning Log, and keep a list of the topics you're learning about. Whenever you learn
+      something new about a topic, make an entry summarizing what you've learned.</p>
+    {% if request.user.is_authenticated %}
+    <a class="btn btn-primary btn-lg mt-1" href="{% url 'learning_logs:new_topic' %}">Create a new Topic &raquo;</a>
+    {% else %}
+    <a class="btn btn-primary btn-lg mt-1" href="{% url 'accounts:register' %}">Register &raquo;</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock page_header %}
+
+{% block content %}
+{% if recent_entries %}
+<div class="py-1 mb-2 ">
+  <h4>Recently added entries:</h4>
+</div>
+
+{% for entry in recent_entries %}
+<div class="card mb-3">
+  <!-- Card header with timestamp and edit link -->
+  <h6 class="card-header pb-2 pt-3">
+    <a href="{% url 'learning_logs:topic' entry.topic.id %}">{{entry.topic.text}}</a> |
+    <small><i>{{entry.date_added|date:'M d, Y - H:i'}}</i></small>
+  </h6>
+  <!-- Card body with entry text -->
+  <div class="card-body pb-1" style="text-align: justify;">
+    {{ entry.text|truncatewords:50|linebreaks }}
+    <b>by {{entry.topic.owner}}</b>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock content %}
