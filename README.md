@@ -3,7 +3,7 @@ Link to the [book repo](https://github.com/Shreehar-KE/book-python-crash-course/
 <br/>
 
 Screenshot:
-![Homepage](./demo/screenshots/Homepage.png)
+![Homepage](./demo/screenshots/Homepage-1.png)
 <br/>
 
 Note: 
