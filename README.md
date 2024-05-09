@@ -7,7 +7,7 @@ Screenshot:
 <br/>
 
 Note: 
-- This code is for local use only and has no configurations for a cloud deployment.
+- This code is only for local use and has no configurations for a cloud deployment.
 - This has few additional features(refer below) which are not mentioned in the book.   
 
 <br/>
